@@ -1,0 +1,24 @@
+<br>
+<br>
+<br>
+<table ng-repeat="tea in teas | filter: categorySearch | filter: search | orderBy: sort">
+  <tr>
+    <td><img src="{{tea.imageUrl}}" alt="{{tea.name}}"></td>
+    <td><h4>{{tea.name}}</h4>
+        <strong>Price:</strong> {{tea.price | currency}}<br>
+        <strong>Caffeine Scale:</strong> {{tea.caffeineScale}}<br>
+        <strong>Ingredients:</strong> {{tea.ingredients}}<br>
+        <strong>Rating:</strong> {{tea.rating}}<br>
+        <strong>In Stock?</strong> {{tea.inStock}}<br>
+        <strong>Categories:</strong><br>
+        <ul ng-repeat="category in tea.categories">
+          <li>{{category.categories}}</li>
+        </ul>
+    </td>
+    <td>
+      <span class="quantText">Quantity</span>
+      <input class="quant" type="number">
+      <button class="btn btn-success">Add To Bag</button>
+    </td>
+  </tr>
+</table>
