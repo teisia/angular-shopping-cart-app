@@ -1,4 +1,4 @@
-var app = angular.module('madTea', ['ngRoute']);
+var app = angular.module('meanTea', ['ngRoute']);
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -6,4 +6,8 @@ app.config(function($routeProvider) {
       templateUrl: 'partials/home.html',
       controller: 'mainController'
   })
+    .when('/cart', {
+      templateUrl: 'partials/cart.html',
+      controller: 'mainController'
+    })
 });

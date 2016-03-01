@@ -1,0 +1,38 @@
+<div class="cartHead">
+  <h3>My Cart</h3>
+  <h4>Total: {{total()}}</h4>
+</div>
+<table class="cartTable">
+  <thead>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Sub-total</th>
+    <th> </th>
+  </thead>
+  <tr ng-repeat="item in cart">
+   <td>
+     <h3>{{item.name}}</h3>
+     <img src="{{item.imageUrl}}"><br>
+     <strong>Caffeine Scale:</strong> {{item.caffeineScale}}<br>
+     <strong>Ingredients:</strong> {{item.ingredients}}<br>
+     <strong>Rating:</strong> {{item.rating}}<br>
+     {{update()}}
+   </td>
+   <td class="qtyColumn">
+     <span ng-hide="hideQty">{{item.quantity}}</span>
+     <span ng-show="showEdit">
+       <select ng-model="editQuantity" ng-change = "updateQuantity(editQuantity)">
+         <option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]">{{qty}}</option>
+       </select>
+     </span>
+   </td>
+   <td class="totColumn">
+     {{item.total | currency}}
+   </td>
+   <td>
+     <p type="button" class="btn btn-default" ng-click="toggleEdit()" ng-hide="hideQty">Edit</p>
+     <p type="button" class="btn btn-default" ng-show="showEdit" ng-click="toggleEdit()" >Save</p>
+     <p type="button" class="btn btn-default" ng-click="remove($index)">Remove</p>
+   </td>
+  </tr>
+</table>

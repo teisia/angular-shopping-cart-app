@@ -1,8 +1,48 @@
-.quant {
-  width: 20%;
-  margin: 0 10px;
+table.search {
+  border: none;
 }
 
-.quantText {
-  font-size: 1.5rem;
+.searchInput {
+  width: 66%;
+}
+
+.searchInput label {
+  margin-left: 20px;
+}
+
+table {
+  margin: 0 auto;
+  border: .5px solid gray;
+}
+
+.teaTableHead {
+  border-bottom: .5px solid gray;
+}
+
+td {
+  border: .5px solid gray;
+}
+
+.teaInfo {
+  padding: 15px;
+}
+
+.cartHead {
+  text-align: center;
+}
+
+.cartTable {
+  width: 60vw;
+}
+
+.cartTable td {
+  padding: 15px;
+}
+
+.qty td {
+  width: 25%;
+}
+
+.totColumn td {
+  width: 25%;
 }

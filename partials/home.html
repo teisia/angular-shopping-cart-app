@@ -1,24 +1,63 @@
+<table class="search">
+  <thead>
+  <th>
+  <label>Search by Category:</label>
+  <select ng-model="category">
+  <option value="">all</option>
+  <option value="dark">dark</option>
+  <option value="cold">cold</option>
+  <option value="awesome">awesome</option>
+  <option value="dry">dry</option>
+  <option value="hot">hot</option>
+  <option value="summer">summer</option>
+  <option value="lucid">lucid</option>
+  <option value="warm">warm</option>
+  <option value="winter">winter</option>
+  <option value="spring">spring</option>
+  </select>
+  </th>
+  <th class="searchInput">
+  <label>Search by name:</label>
+  <input ng-model="search" type="text" placeholder="Search">
+  </th>
+  <th>
+  <a href="/#/cart"><button class="btn btn-warning">Checkout | Bag: {{bagItems}} <ng-pluralize count='cart.length' when="{'0': 'Empty', '1': '(1) Item', 'other': '({{cart.length}}) Items'}"> </ng-pluralize></button></a>
+  </th>
+</table>
 <br>
-<br>
-<br>
-<table ng-repeat="tea in teas | filter: categorySearch | filter: search | orderBy: sort">
-  <tr>
+<table>
+  <thead class="teaTableHead">
+    <th>Tea</th>
+    <th>Information</th>
+    <th>
+      <label>Sort by price</label>
+      <select ng-model="sortBy">
+      <option value="price">lowest</option>
+      <option value="-price">highest</option>
+      </select>
+    </th>
+  </thead>
+  <tr ng-repeat="tea in teas | filter: category | filter: search | orderBy: sortBy">
     <td><img src="{{tea.imageUrl}}" alt="{{tea.name}}"></td>
-    <td><h4>{{tea.name}}</h4>
-        <strong>Price:</strong> {{tea.price | currency}}<br>
+    <td class="teaInfo"><h4>{{tea.name}}</h4>
+        <strong>Price:</strong> {{tea.price/100 | currency}}<br>
         <strong>Caffeine Scale:</strong> {{tea.caffeineScale}}<br>
         <strong>Ingredients:</strong> {{tea.ingredients}}<br>
         <strong>Rating:</strong> {{tea.rating}}<br>
         <strong>In Stock?</strong> {{tea.inStock}}<br>
         <strong>Categories:</strong><br>
         <ul ng-repeat="category in tea.categories">
-          <li>{{category.categories}}</li>
+          <li>{{category}}</li>
         </ul>
     </td>
-    <td>
-      <span class="quantText">Quantity</span>
-      <input class="quant" type="number">
-      <button class="btn btn-success">Add To Bag</button>
+    <td class="teaInfo">
+      <span>Quantity</span>
+        <select ng-model="quantity">
+          <option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]">{{qty}}</option>
+        </select>
+        <br>
+        <br>
+      <button class="btn btn-success" ng-click="add(quantity)">Add To Bag</button>
     </td>
   </tr>
 </table>
