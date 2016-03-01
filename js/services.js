@@ -139,5 +139,4 @@ this.add = function(quantity) {
   cart.push(item)
 }
 
-
 })
